@@ -1,4 +1,4 @@
-# snake-admin
+# test
 
 > A Vue.js project
 
