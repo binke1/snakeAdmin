@@ -1,7 +1,7 @@
 import axios from "axios";
 import {Message, MessageBox} from "element-ui";
-import store from "../store";
-import {encodeBasic64, getToken, getUserUuid, removeToken, removeUserUuid} from "@/utils/auth";
+// import store from "../store";
+// import {encodeBasic64, getToken, getUserUuid, removeToken, removeUserUuid} from "@/utils/auth";
 
 // Create an axios instance
 
