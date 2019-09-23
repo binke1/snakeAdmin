@@ -16,7 +16,7 @@
     "eventsource-polyfill": "^0.9.6",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
-    "webpack-hot-middleware": "^2.25.0"
+    "webpack-hot-middleware": "^2.18.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

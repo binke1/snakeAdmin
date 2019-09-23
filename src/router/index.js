@@ -6,7 +6,11 @@ import login from '@/views/login/index'
 export const constantRouterMap = [ {
   path: '/',
   name: 'login',
-  component: login
+  component: _import('login/index')
+}, {
+  path: '/login',
+  name: 'login',
+  component: _import('login/index')
 }]
 export default new Router({
   // mode: 'history',
@@ -15,10 +19,4 @@ export default new Router({
   }),
   routes: constantRouterMap
 })
-export const asyncRouterMap = [
-  {
-    path: '/',
-    name: 'login',
-    component: login
-  }
-]
+export const asyncRouterMap = []

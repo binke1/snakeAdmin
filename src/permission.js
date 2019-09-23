@@ -8,7 +8,7 @@ import pageParams from "./store/modules/pageParams"; // validate permission
 const whiteList = ['/login','/hotelUse','/invoice','/pdfGroupNotice','/orderDetail','/tripAndCanceled','/inform','/productPromotion','/invoiceDistributor']
 router.beforeEach((to, from, next) => {
   NProgress.start()
-  if (!getToken()) {
+  if (getToken()) {
     if (to.path === '/login' || to.path === '/register') {
       //if choose login , remove token, same logout
       removeToken()
