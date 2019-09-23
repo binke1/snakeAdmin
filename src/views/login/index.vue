@@ -78,7 +78,7 @@ export default {
 }
 </script>
 
-<style rel="stylesheet/scss" lang="scss">
+<style lang="scss">
   @import "src/styles/mixin.scss";
   $bg:#2d3a4b;
   $dark_gray:#889aa4;

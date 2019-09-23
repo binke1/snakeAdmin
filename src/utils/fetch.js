@@ -1,7 +1,7 @@
 import axios from "axios";
 import {Message, MessageBox} from "element-ui";
-// import store from "../store";
-// import {encodeBasic64, getToken, getUserUuid, removeToken, removeUserUuid} from "@/utils/auth";
+import store from "../store";
+import {encodeBasic64, getToken, getUserUuid, removeToken, removeUserUuid} from "@/utils/auth";
 
 // Create an axios instance
 
@@ -54,7 +54,7 @@ service.interceptors.response.use(
      */
     const res = response.data;
     if (res.code !== 20000) {
-      store.dispatch('closeLoading')
+      // store.dispatch('closeLoading')
       if (res.errors != null && res.errors != 'undefined') {
         let error = res.errors[0]
         console.log(error)
@@ -84,12 +84,12 @@ service.interceptors.response.use(
       }
       return Promise.reject('error')
     } else {
-      store.dispatch('closeLoading')
+      // store.dispatch('closeLoading')
       return response
     }
   },
   error => {
-    store.dispatch('closeLoading')
+    // store.dispatch('closeLoading')
     console.log('err' + error)// for debug
     //401 go to login page
     if (error.response != null && error.response != 'undefined') {
