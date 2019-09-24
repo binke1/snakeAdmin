@@ -60,6 +60,7 @@ export default {
   },
   methods: {
     handleLogin() {
+      this.$router.push('/index')
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true
@@ -97,7 +98,7 @@ export default {
       border: 0px;
       -webkit-appearance: none;
       border-radius: 0px;
-      padding: 12px 5px 12px 15px;
+      padding: 12px 5px 12px 8px;
       color: $light_gray;
       height: 47px;
     }
@@ -112,7 +113,7 @@ export default {
       margin-bottom: 10px;
     }
     .svg-container {
-      padding: 6px 5px 6px 15px;
+      padding: 6px 0 6px 15px;
       color: $dark_gray;
       vertical-align: middle;
       width: 30px;
@@ -133,7 +134,7 @@ export default {
       position: absolute;
       left: 0;
       right: 0;
-      width: 400px;
+      width: 350px;
       padding: 35px 35px 15px 35px;
       margin: 120px auto;
     }
