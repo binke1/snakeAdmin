@@ -1,5 +1,6 @@
 <template>
     <div class="user-container">
+      <el-card>
         <el-table>
           <el-table-column label="用户名"></el-table-column>
           <el-table-column label="姓氏"></el-table-column>
@@ -14,6 +15,7 @@
             </template>
           </el-table-column>
         </el-table>
+      </el-card>
     </div>
 </template>
 
@@ -25,6 +27,7 @@
 
 <style lang="scss" scoped>
   .user-container{
-
+    background-color: rgb(240,242,245);
+    padding: 32px;
   }
 </style>
