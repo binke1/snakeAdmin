@@ -19,8 +19,9 @@
 </template>
 
 <script>
-
+  import setI18n from './setI18n'
 export default {
+  mixins:[setI18n],
   created() {
     this.getBreadcrumb()
   },
