@@ -27,10 +27,21 @@ export const asyncRouterMap = [
   name: '用户管理',
   redirect: '/user/index',
   component: Layout,
-  hidden: false,
+  icon: 'iconyonghuguanli',
   children: [{
     path: 'index',
     component: _import('user/index'),
     name: '所有用户列表'
   }]
-}]
+}, {
+    path: '/order',
+    name: '订单管理',
+    redirect: '/order/index',
+    component: Layout,
+    icon: 'icondingdanguanli-',
+    children: [{
+      path: 'index',
+      component: _import('order/index'),
+      name: '订单列表'
+    }]
+  }]
