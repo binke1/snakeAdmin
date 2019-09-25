@@ -3,9 +3,9 @@
     <hamburger class="hamburger-container" :toggleClick="toggleSideBar" :isActive="sidebar.opened"></hamburger>
     <levelbar></levelbar>
     <div class="i18moneyStyle">
-      <moneyExchange></moneyExchange>
+      <!--<moneyExchange></moneyExchange>-->
     </div>
-    <i18-language class="i18LanguageStyle"></i18-language>
+    <!--<i18-language class="i18LanguageStyle"></i18-language>-->
     <message-prompt class="messagePromptStyle"></message-prompt>
     <el-dropdown class="avatar-container" trigger="click">
       <div class="avatar-wrapper">

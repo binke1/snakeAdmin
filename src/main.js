@@ -8,6 +8,7 @@ import store from './store'
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/icons'
 import '@/permission'
+import 'normalize.css'
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 /* eslint-disable no-new */

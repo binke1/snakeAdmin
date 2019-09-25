@@ -21,7 +21,8 @@ service.interceptors.request.use(config => {
     removeUserUuid()
     return config
   }
-  if (config.url == loginUrl) {
+  // if (config.url == loginUrl) {
+  if (config.url.indexOf('login' !== -1)) {
     var credentials = 'Basic ' + encodeBasic64(config.data.username + ':' + config.data.password)
     config.headers.common['Authorization'] = credentials
     config.headers['Content-Type'] = 'application/x-www-form-urlencoded';

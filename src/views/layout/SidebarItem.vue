@@ -37,9 +37,10 @@
 </template>
 
 <script>
-
+  import setI18n from './setI18n'
 export default {
   name: 'SidebarItem',
+  mixins:[setI18n],
   props: {
     routes: {
       type: Array

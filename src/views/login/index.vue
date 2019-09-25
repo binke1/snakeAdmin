@@ -60,14 +60,13 @@ export default {
   },
   methods: {
     handleLogin() {
-      this.$router.push('user/index')
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true
           this.$store.dispatch('Login', this.loginForm).then(() => {
             this.loading = false
-            this.$router.push({ path: '' })
-          }).catch(() => {
+            this.$router.push('/user/index')
+          }).catch((err) => {
             this.loading = false
           })
         } else {
