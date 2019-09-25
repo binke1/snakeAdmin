@@ -21,8 +21,14 @@ service.interceptors.request.use(config => {
     removeUserUuid()
     return config
   }
-  if (config.url == loginUrl) {
-    var credentials = 'Basic ' + encodeBasic64(config.data.username + ':' + config.data.password)
+  // if (config.url == loginUrl) {
+  console.log(config.url)
+  console.log(loginUrl)
+  console.log(store.getters.token)
+  if (config.url.indexOf('login' !== -1)) {
+    const username = config.data?config.data.username?config.data.username:undefined:undefined
+    const password = config.data?config.data.password?config.data.password:undefined:undefined
+    var credentials = 'Basic ' + encodeBasic64(username + ':' + password)
     config.headers.common['Authorization'] = credentials
     config.headers['Content-Type'] = 'application/x-www-form-urlencoded';
   }

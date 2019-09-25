@@ -1,30 +1,21 @@
-# test
+# cexweb
+frontend web dev
 
-> A Vue.js project
+## Build docker image at project root
+docker build -t cexweb-build-env .
 
-## Build Setup
+## Build project in docker container
+docker run -itd --rm --name cexweb-build-env cexweb-build-env /bin/bash
 
-``` bash
-# install dependencies
-npm install
+docker cp . cexweb-build-env:/usr/src/cexweb
 
-# serve with hot reload at localhost:8080
-npm run dev
+docker exec -it -w /usr/src/cexweb cexweb-build-env npm install
 
-# build for production with minification
-npm run build
+docker exec -it -w /usr/src/cexweb cexweb-build-env npm run build
 
-# build for production and view the bundle analyzer report
-npm run build --report
+docker cp cexweb-build-env:/usr/src/cexweb/dist .
 
-# run unit tests
-npm run unit
+docker stop cexweb-build-env
 
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## Host static pages as a local server on port 43001
+docker run -d -p 43001:8080 --rm --name cexweb-build-env cexweb-build-env http-server /usr/src/cexweb/dist
