@@ -55,9 +55,13 @@ export default {
 </script>
 
 <style lang="scss">
+  a{
+    text-decoration: none;
+  }
   .slider_item_container{
     .el-menu-item{
       padding-left: 53px !important;
+      border-bottom-color:#ffffff!important;
     }
     .el-menu-item.first_item{
       padding-left: 20px!important;
