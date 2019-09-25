@@ -1,7 +1,7 @@
 <template>
     <div class="user-container">
       <el-card>
-        <el-table>
+        <el-table size="small">
           <el-table-column label="用户名"></el-table-column>
           <el-table-column label="姓氏"></el-table-column>
           <el-table-column label="名字"></el-table-column>

@@ -44,4 +44,15 @@ export const asyncRouterMap = [
       component: _import('order/index'),
       name: '订单列表'
     }]
+  }, {
+    path: '/product',
+    name: '产品设置',
+    redirect: '/product/index',
+    component: Layout,
+    icon: 'iconchanpinshezhi',
+    children: [{
+      path: 'index',
+      component: _import('product/index'),
+      name: '产品列表'
+    }]
   }]
