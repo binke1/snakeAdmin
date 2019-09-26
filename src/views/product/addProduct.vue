@@ -63,7 +63,8 @@
               </el-radio-group>
             </el-form-item>
             <el-form-item>
-              <el-button size="small" type="primary">保存</el-button>
+              <el-button v-if="!productId" @click="saveProductInfo" size="small" type="primary">保存</el-button>
+              <el-button v-else @click="updateProductInfo" size="small" type="primary">更新</el-button>
               <el-button @click="resetProductData" size="small" type="warning">重置</el-button>
             </el-form-item>
           </el-form>
@@ -72,11 +73,12 @@
 </template>
 
 <script>
-  import {createProduct} from 'api/product'
+  import {createProduct,getProductById,updateProduct} from 'api/product'
     export default {
       name: "addProduct",
       data() {
         return {
+          productId: null,
           productData: {
             type: 'apple',
             sku: null,
@@ -98,33 +100,98 @@
           }
         }
       },
+      created() {
+        if (this.$route.query.id) {
+          this.productId = this.$route.query.id
+          this.getProductById(this.productId)
+        }
+      },
       methods: {
+        getProductById(id) {
+          getProductById(id).then(response => {
+            const data = response.data.result
+            this.productData ={
+              id: this.productId,
+              type: data.type,
+              sku: data.sku,
+              supplierSku: data.supplierSku,
+              title: data.title,
+              summary: data.summary,
+              description: data.summary,
+              beforeTaxPrice: data.beforeTaxPrice,
+              pstRate: data.pstRate,
+              gstRate: data.gstRate,
+              hasTax: data.hasTax,
+              hasHot: data.hasHot,
+              hasPromotion: data.hasPromotion,
+              weight: data.weight,
+              currency: data.currency,
+              location: data.location,
+              lcid: data.lc,
+              status: data.status
+            }
+          })
+        },
+        updateProductInfo() {
+          this.$confirm('是否更新产品信息', '提示', {
+            confirmButtonText: '更新',
+            cancelButtonText:'取消',
+            type: 'info'
+          }).then(_ => {
+            updateProduct(this.productData).then(response => {
+              this.$message({
+                message: '更新成功！',
+                type: 'success',
+                center: true
+              })
+            })
+          })
+        },
+        saveProductInfo() {
+          this.$confirm('是否保存产品信息', '提示', {
+            confirmButtonText: '保存',
+            cancelButtonText:'取消',
+            type: 'info'
+          }).then(_ => {
+            createProduct(this.productData).then(response => {
+              this.resetData()
+              this.$message({
+                message: '保存成功！',
+                type: 'success',
+                center: true
+              })
+            })
+          })
+        },
         resetProductData() {
           this.$confirm('是否清空数据', '提示', {
             confirmButtonText: '确定',
             cancelButtonText: '取消',
             type: 'warning'
           }).then(_ => {
-            this.productData = {
-              type: 'apple',
-              sku: null,
-              supplierSku: null,
-              title: null,
-              summary: null,
-              description: null,
-              beforeTaxPrice: null,
-              pstRate: 0,
-              gstRate: 0,
-              hasTax: true,
-              hasHot: true,
-              hasPromotion: false,
-              weight: 0,
-              currency: 'CAD',
-              location: null,
-              lcid: 2052,
-              status: 1
-            }
+            this.resetData()
           }).catch((_ => {}))
+        },
+        resetData() {
+          this.productData = {
+            type: 'apple',
+            sku: null,
+            supplierSku: null,
+            title: null,
+            summary: null,
+            description: null,
+            beforeTaxPrice: null,
+            pstRate: 0,
+            gstRate: 0,
+            hasTax: true,
+            hasHot: true,
+            hasPromotion: false,
+            weight: 0,
+            currency: 'CAD',
+            location: null,
+            lcid: 2052,
+            status: 1
+          }
         }
       }
     }

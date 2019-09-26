@@ -2,7 +2,6 @@ import axios from "axios";
 import {Message, MessageBox} from "element-ui";
 import store from "../store";
 import {encodeBasic64, getToken, getUserUuid, removeToken, removeUserUuid} from "@/utils/auth";
-
 // Create an axios instance
 
 const service = axios.create({
@@ -22,19 +21,15 @@ service.interceptors.request.use(config => {
     return config
   }
   // if (config.url == loginUrl) {
-  console.log(config.url)
-  console.log(loginUrl)
-  console.log(store.getters.token)
-  if (config.url.indexOf('login' !== -1)) {
+  if (config.url.indexOf('login') > -1) {
+    alert(111)
     const username = config.data?config.data.username?config.data.username:undefined:undefined
     const password = config.data?config.data.password?config.data.password:undefined:undefined
     var credentials = 'Basic ' + encodeBasic64(username + ':' + password)
     config.headers.common['Authorization'] = credentials
-    config.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+    // config.headers['Content-Type'] = 'application/x-www-form-urlencoded';
   }
   if (store.getters.token) {
-    // config.headers['access_token'] = getToken()
-    // config.headers['uuid'] = getUserUuid()
     var newParams = {
       "access_token": getToken(),
       'uuid': getUserUuid()
