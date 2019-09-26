@@ -20,7 +20,7 @@ export default new Router({
 export const asyncRouterMap = [
   {
     path: '/',
-    redirect: '/user/index',
+    redirect: 'login',
     hidden: true,
   }, {
   path: '/user',
@@ -54,5 +54,9 @@ export const asyncRouterMap = [
       path: 'index',
       component: _import('product/index'),
       name: '产品列表'
+    }, {
+      path: 'createProduct',
+      name: '添加产品',
+      component: _import('product/addProduct')
     }]
   }]
