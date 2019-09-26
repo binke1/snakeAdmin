@@ -39,10 +39,10 @@
             </template>
           </el-table-column>
           <el-table-column width="160" label="上架时间" prop="createdAt"></el-table-column>
-          <el-table-column width="150px" label="操作" prop="createdAt">
+          <el-table-column label="操作" prop="createdAt">
             <template slot-scope="scope">
               <el-button @click="viewProductDetails(scope.row.id)" size="mini" type="primary"><i class="el-icon-edit"></i></el-button>
-              <el-button size="mini" type="danger"><i class="el-icon-delete"></i></el-button>
+              <!--<el-button size="mini" type="danger"><i class="el-icon-delete"></i></el-button>-->
             </template>
           </el-table-column>
         </el-table>

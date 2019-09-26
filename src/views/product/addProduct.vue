@@ -1,5 +1,8 @@
 <template>
     <div class="add-product-container">
+      <div v-if="productId" style="text-align: right;margin-bottom: 10px">
+        <el-button @click="$router.go(-1)" type="primary" size="mini">返回</el-button>
+      </div>
         <el-card>
           <el-form label-position="left" label-width="120px" :model="productData">
             <el-form-item label="产品名称">
