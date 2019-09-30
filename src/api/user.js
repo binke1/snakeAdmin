@@ -64,7 +64,7 @@ export function editClient(jsonData) {
 
 export function getClientPage(jsonData, pageNo, pageSize) {
   return fetch({
-    url: '/users/getClientPage?pageNo=' + pageNo + '&pageSize=' + pageSize,
+    url: '/users/getUserPage?pageNo=' + pageNo + '&pageSize=' + pageSize,
     method: 'post',
     data: jsonData
   })

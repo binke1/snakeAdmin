@@ -74,6 +74,7 @@ const user = {
     GetInfo({ commit, state }) {
       return new Promise((resolve, reject) => {
         getInfo().then(response => {
+          console.log(response)
           const data = response.data.result
           if(data.companyUuid){
             console.log("companyUuid存在并且存入")
@@ -82,7 +83,7 @@ const user = {
             setCookie('companyUuid', '')
           }
           console.log(data)
-          commit('SET_ROLES', data.role)
+          commit('SET_ROLES', data.role || 'Admin')
           commit('SET_NAME', data.username)
           resolve(response)
         }).catch(error => {

@@ -16,9 +16,10 @@ router.beforeEach((to, from, next) => {
       next()
       // next({ path: '/' })
     } else {
+      console.log(store.getters.roles)
       if (store.getters.roles.length === 0) {
         store.dispatch('GetInfo').then(res => {
-          const roles = res.data.result.role
+          const roles = res.data.result.role || 'Admin'
           store.dispatch('GenerateRoutes', { roles }).then(() => {
             router.addRoutes(store.getters.addRouters)
             next({ ...to })
