@@ -5,7 +5,7 @@ import "nprogress/nprogress.css";
 import {getToken, removeToken, removeUserUuid} from "@/utils/auth";
 import pageParams from "./store/modules/pageParams"; // validate permission
 
-const whiteList = ['/login','/hotelUse','/invoice','/pdfGroupNotice','/orderDetail','/tripAndCanceled','/inform','/productPromotion','/invoiceDistributor']
+const whiteList = ['/login']
 router.beforeEach((to, from, next) => {
   NProgress.start()
   if (getToken()) {

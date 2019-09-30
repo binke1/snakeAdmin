@@ -32,7 +32,11 @@ export const asyncRouterMap = [
     path: 'index',
     component: _import('user/index'),
     name: '所有用户列表'
-  }]
+  }, {
+    path: 'userForm',
+    component: _import('user/userForm'),
+    name: '添加新用户'
+  }, ]
 }, {
     path: '/order',
     name: '订单管理',

@@ -23,12 +23,12 @@ export default {
 <style lang="scss">
   .el_menu_container{
     .el-menu-item.is-active{
-      background-color: #18a77a !important;
+      background-color: #409EFF !important;
     }
   }
   .menu-indent{
     .el-menu-item.is-active{
-      background-color: #18a77a !important;
+      background-color: #409EFF !important;
     }
   }
 </style>
