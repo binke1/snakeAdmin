@@ -19,17 +19,22 @@
           layout="total, sizes, prev, pager, next, jumper"
           :total="total">
         </el-pagination>
-        <el-table size="small">
-          <el-table-column label="用户名"></el-table-column>
-          <el-table-column label="姓氏"></el-table-column>
-          <el-table-column label="名字"></el-table-column>
-          <el-table-column label="电话"></el-table-column>
-          <el-table-column label="邮箱"></el-table-column>
-          <el-table-column label="创建时间"></el-table-column>
-          <el-table-column label="状态"></el-table-column>
+        <el-table :data="tableData" size="small">
+          <el-table-column prop="userName" label="用户名"></el-table-column>
+          <el-table-column prop="firstName" label="姓氏"></el-table-column>
+          <el-table-column prop="lastName" label="名字"></el-table-column>
+          <el-table-column prop="phone" label="电话"></el-table-column>
+          <el-table-column prop="email" label="邮箱"></el-table-column>
+          <el-table-column prop="createAt" label="创建时间"></el-table-column>
+          <el-table-column label="状态">
+            <template slot-scope="scope">
+              <span v-if="!scope.row.status === 2">可用</span>
+              <span v-else>不可用</span>
+            </template>
+          </el-table-column>
           <el-table-column label="操作">
             <template slot-scope="scope">
-              <el-button type="warning" size="small">编辑</el-button>
+              <el-button @click="editUser(scope.row.id)" type="warning" size="small">编辑</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -53,13 +58,22 @@
           },
           pageNo: 1,
           pageSize: 10,
-          total: 0
+          total: 0,
+          tableData: []
         }
       },
       mounted() {
         this.handleFilter()
       },
       methods: {
+        editUser(id) {
+          this.$router.push({
+            path: '/user/userForm',
+            query: {
+              id: id
+            }
+          })
+        },
         handleSizeChange(size) {
           this.pageSize = size
           this.pageNo = 1
@@ -84,6 +98,7 @@
               obj.mobile = response.data.result.list[i].mobile
               obj.email = response.data.result.list[i].email
               obj.status = response.data.result.list[i].status
+              obj.id = response.data.result.list[i].id
 
               obj.createdAt = moment(response.data.result.list[i].createdAt).format("YYYY-MM-DD HH:mm:ss")
               if(response.data.result.list[i].userPaymentOption != null && response.data.result.list[i].userPaymentOption != 'undefined'){

@@ -76,3 +76,10 @@ export function activeClient(userUuid) {
     method: 'get'
   })
 }
+
+export function getUserById(userId) {
+  return fetch({
+    url: '/users/' + userId,
+    method: 'get'
+  })
+}

@@ -109,7 +109,8 @@
     editUser,
     updateUserRoleList,
     updateCompanyList,
-    sendCompanyAccountAndPasswordMailByUserUuid
+    sendCompanyAccountAndPasswordMailByUserUuid,
+    getUserById
   } from '@/api/user'
   import {getRoleById, getEnableRoleList} from '@/api/role'
   // import {getAllCompaniesList} from '@/api/company'
@@ -134,24 +135,25 @@
         companyOptions:[],
         userRoleList:[],
         userCompanyList:1,
-        isSend:0// 是否发送信息
+        isSend:0,// 是否发送信息
+        userId: null
       }
     },
     mounted() {
-      var uuid = this.$route.params.uuid
-      this.userForm.uuid = uuid
-      this.userForm.userName = this.$route.params.userName
-      this.userForm.firstName = this.$route.params.firstName
-      this.userForm.lastName = this.$route.params.lastName
-      this.userForm.phone = this.$route.params.phone
-      this.userForm.mobile = this.$route.params.mobile
-      this.userForm.email = this.$route.params.email
-      this.userForm.status = this.$route.params.status
+      if (this.$route.query.id) {
+        this.getUserById(this.$route.query.id)
+      }
       this.getRoleList()
-      // this.getAllCompaniesList()
+      let uuid = this.$route.query.uuid
+      this.userForm.uuid = uuid
       this.getUserByUuid(uuid)
     },
     methods: {
+      getUserById(id) {
+        getUserById(id).then(response => {
+          console.log(response)
+        })
+      },
       onSubmit() {
         if (this.userForm.uuid == null || this.userForm.uuid == 'undefined') {
           createUser(this.userForm).then(response => {
