@@ -16,7 +16,7 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
-    "axios": "^0.16.2",
+    "axios": "^0.21.1",
     "eventsource-polyfill": "^0.9.6",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
